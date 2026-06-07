@@ -1,59 +1,267 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# VolunteerHub
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+VolunteerHub is a web-based event and volunteer management platform developed using Laravel. The platform connects volunteers and organizations through event discovery, registration, payment management, and activity tracking features.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### User Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* User Registration and Login
+* Forgot Password with OTP Verification
+* Browse Available Events
+* View Event Details
+* Register for Events
+* Track Registration Status
+* Payment History
+* Upload Payment Proof
+* Request Refund
+* View Refund Status
+* Manage User Profile
+* View Past Events
+* Browse Organizations
 
-## Learning Laravel
+### Organization Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+* Organization Registration and Login
+* Dashboard Overview
+* Create Events
+* Update Events
+* Delete Events
+* Manage Event Registrations
+* Approve or Reject Participants
+* Manage Refund Requests
+* Approve or Reject Refunds
+* Manage Payment Methods
+* Update Organization Profile
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## Technology Stack
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Backend
 
-### Premium Partners
+* Laravel 12
+* PHP 8.2+
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Frontend
 
-## Contributing
+* Blade Template Engine
+* Tailwind CSS
+* Vite
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Database
 
-## Code of Conduct
+* MySQL 8.0
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Deployment
 
-## Security Vulnerabilities
+* Docker
+* Docker Compose
+* Nginx
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
+
+## Project Structure
+
+```text
+event-management
+│
+├── app/
+├── bootstrap/
+├── config/
+├── database/
+├── docker/
+├── public/
+├── resources/
+├── routes/
+├── storage/
+├── tests/
+│
+├── Dockerfile
+├── docker-compose.yml
+├── composer.json
+├── package.json
+└── README.md
+```
+
+---
+
+## Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/nabilaalya9/event-management.git
+
+cd event-management
+```
+
+### Configure Environment
+
+```bash
+cp .env.example .env
+```
+
+Update the environment configuration if necessary.
+
+---
+
+## Run Using Docker
+
+### Build Containers
+
+```bash
+docker compose build
+```
+
+### Start Containers
+
+```bash
+docker compose up -d
+```
+
+### Check Running Containers
+
+```bash
+docker ps
+```
+
+Expected containers:
+
+```text
+event_management_app
+event_management_nginx
+event_management_db
+```
+
+---
+
+## Database Migration
+
+Run migrations:
+
+```bash
+docker exec -it event_management_app php artisan migrate
+```
+
+---
+
+## Database Seeder
+
+Populate initial data:
+
+```bash
+docker exec -it event_management_app php artisan db:seed
+```
+
+Or:
+
+```bash
+docker exec -it event_management_app php artisan migrate:fresh --seed
+```
+
+---
+
+## Storage Link
+
+Create symbolic link for uploaded files:
+
+```bash
+docker exec -it event_management_app php artisan storage:link
+```
+
+---
+
+## Frontend Build
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Build assets:
+
+```bash
+npm run build
+```
+
+---
+
+## Application URL
+
+Open the application:
+
+```text
+http://localhost:8000
+```
+
+---
+
+## User Roles
+
+### Volunteer
+
+Can:
+
+* Register account
+* Join events
+* Upload payment proof
+* Request refund
+* Manage profile
+
+### Organization
+
+Can:
+
+* Create events
+* Manage participants
+* Manage payment methods
+* Manage refund requests
+* View dashboard analytics
+
+---
+
+## Database Design
+
+Main entities:
+
+* Users
+* Organizations
+* Events
+* Event Categories
+* Event Types
+* Event Registrations
+* Payments
+* Payment Methods
+* Refunds
+* Participants
+* Password Reset OTP
+
+---
+
+## Testing
+
+The application has been tested for:
+
+* User Authentication
+* Organization Authentication
+* Event Management
+* Registration Workflow
+* Payment Workflow
+* Refund Workflow
+* Docker Deployment
+
+---
+
+## Development Team
+
+Developed as an academic project for Event Management System development using Laravel and Docker.
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is developed for educational purposes.
