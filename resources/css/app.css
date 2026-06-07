@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #2F7F79;
+    --color-background-light: #f6f8f6;
+    --color-background-dark: #141e15;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Lexend', sans-serif; }
+[x-cloak] { display: none !important; }
+.nav-link-btn:hover { opacity: 0.8; }
